@@ -1,7 +1,7 @@
 # python-flask-url-shortener
 A URL shortener website created using Python, Flask, SQLite.
 
-Here is a video demo of the website:
+Here is a **video demo** of the website:
 
 <a href = "https://www.youtube.com/watch?v=w1ZUJxAa-Rg" target = "_blank">![URL Shortener Video Demonstration Thumbnail](https://img.youtube.com/vi/w1ZUJxAa-Rg/0.jpg)</a>
 
