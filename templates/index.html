@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gradient-to-br from-indigo-950 to-red-950 w-full min-h-full overflow-hidden">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>URL Shortener</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+    </head>
+
+    <body>
+        <div class = "flex flex-col items-center">
+            <h1 class="text-6xl text-white font-rubik font-extrabold py-8">URL Shortener</h1>
+            <form class="font-rubik w-1/2  flex flex-col gap-y-4 items-center" method="post">
+                <input type="url" class = "font-rubik w-full placeholder:italic placeholder:text-slate-400 text-black border-white rounded-lg py-2 px-3 focus:outline-none" placeholder="Please enter a URL..." name="longurl"/>
+                <input type="submit" class = "text-white w-32 font-rubik rounded-2xl bg-orange-500 p-2" value = "Shorten"/>
+            </form>
+            <p class="text-white font-rubik py-4 h-[56px]">{% if short_url %} Your shortened URL: {{ short_url }} {% endif %}</p>
+            {% if maps %}
+            <table class="text-center text-white my-20">
+                <tr>
+                    <th class="border-solid border border-white bg-slate-500">Short URL</th>
+                    <th class="border-solid border border-white bg-slate-500">Long URL</th>
+                    <th class="border-solid border border-white bg-slate-500">Creation Date</th>
+                </tr>
+                {% for map in maps %}
+                <tr>
+                    <td class = "border-solid border border-white p-2">{{map.short_url}}</td>
+                    <td class = "border-solid border border-white p-2">{% if map.long_url|length < 50 %}
+                            {{map.long_url}}
+                        {% else %}
+                            {{map.long_url[:50] + '...'}}
+                        {% endif %}</td>
+                    <td class = "border-solid border border-white p-2">{{map.created_at}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% endif %}
+        </div>
+    </body>
+</html>
